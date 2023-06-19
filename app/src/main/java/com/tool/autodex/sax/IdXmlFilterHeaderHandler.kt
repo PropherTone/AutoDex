@@ -3,13 +3,13 @@ package com.tool.autodex.sax
 import com.tool.autodex.checkHeader
 import org.xml.sax.Attributes
 
-class PublicXmlFilterHeaderHandler : XmlHandler<String, MutableList<String>>() {
+class IdXmlFilterHeaderHandler : XmlHandler<String, MutableList<String>>() {
 
     override fun Attributes.getTypeValue(): String = getValue(getIndex("type"))
 
     override fun Attributes.getNameValue(): String = getValue(getIndex("name"))
 
-    override fun areTargetQName(qName: String?): Boolean = qName == "public"
+    override fun areTargetQName(qName: String?): Boolean = qName == "item"
 
     override fun addRes(map: MutableMap<String, MutableList<String>>, key: String, value: String) {
         if (!checkHeader(value)) return
